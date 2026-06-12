@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhishek Jaiswal — Backend Product Engineer</title>
+  <meta name="description" content="Abhishek Jaiswal is a Backend Product Engineer with 4.5+ years of experience building scalable CRM, HRMS, Healthcare, and Booking systems using Ruby on Rails." />
+  <meta name="keywords" content="Ruby on Rails Developer, Backend Engineer, Product Engineer, API Development, PostgreSQL Developer, MongoDB Developer, Remote Backend Engineer India, Scalable Web Applications" />
+  <meta property="og:title" content="Abhishek Jaiswal — Backend Product Engineer" />
+  <meta property="og:description" content="4.5+ years building scalable business systems. Open to backend and product engineering roles." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────────────── */
+    :root {
+      --bg:         #0F1117;
+      --bg-2:       #161B27;
+      --bg-3:       #1E2435;
+      --border:     #252D3D;
+      --muted:      #4A5568;
+      --body:       #A0AEC0;
+      --text:       #E2E8F0;
+      --heading:    #F7FAFC;
+      --accent:     #4F6EF7;
+      --accent-dim: rgba(79,110,247,.12);
+      --accent-glow:rgba(79,110,247,.25);
+      --green:      #34D399;
+      --tag-bg:     rgba(79,110,247,.1);
+      --tag-text:   #818CF8;
+      --radius:     8px;
+      --radius-lg:  14px;
+    }
+    [data-theme="light"] {
+      --bg:         #FAFAFA;
+      --bg-2:       #F1F5F9;
+      --bg-3:       #E8EEF6;
+      --border:     #CBD5E1;
+      --muted:      #94A3B8;
+      --body:       #475569;
+      --text:       #1E293B;
+      --heading:    #0F172A;
+      --accent:     #3B5BDB;
+      --accent-dim: rgba(59,91,219,.08);
+      --accent-glow:rgba(59,91,219,.2);
+      --green:      #059669;
+      --tag-bg:     rgba(59,91,219,.08);
+      --tag-text:   #3B5BDB;
+    }
+
+    /* ─── RESET ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      transition: background .25s, color .25s;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ─── LAYOUT ──────────────────────────────────────────────────── */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    section { padding: 88px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ─── NAV ─────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .85rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: -.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--body);
+      transition: color .2s;
+      letter-spacing: .01em;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .theme-btn {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: var(--body);
+      transition: background .2s, color .2s;
+      font-size: 1rem;
+    }
+    .theme-btn:hover { background: var(--bg-3); color: var(--text); }
+    .nav-mobile-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--body);
+      cursor: pointer;
+      font-size: 1.3rem;
+      padding: 4px;
+    }
+
+    /* ─── HERO ────────────────────────────────────────────────────── */
+    #hero {
+      padding: 96px 0 88px;
+      border-top: none;
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-breadcrumb {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .78rem;
+      color: var(--muted);
+      letter-spacing: .04em;
+      margin-bottom: 28px;
+    }
+    .hero-breadcrumb span { color: var(--accent); }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-glow);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--tag-text);
+      margin-bottom: 24px;
+      letter-spacing: .02em;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+    .hero-name {
+      font-size: clamp(2.2rem, 4vw, 3.75rem);
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      margin-bottom: 12px;
+    }
+    .hero-role {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 20px;
+      letter-spacing: -.01em;
+    }
+    .hero-sub {
+      font-size: .98rem;
+      color: var(--body);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .83rem;
+      color: var(--body);
+    }
+    .hero-meta-item svg { color: var(--accent); flex-shrink: 0; }
+    .hero-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    .chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .73rem;
+      font-weight: 500;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      color: var(--body);
+      border-radius: 5px;
+      padding: 4px 10px;
+      letter-spacing: .02em;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    /* ── Hero right panel ── */
+    .hero-panel {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .hero-panel-title {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .hero-domain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .hero-domain-card {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hero-domain-card .d-icon { font-size: 1.2rem; }
+    .hero-domain-card .d-name {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .hero-domain-card .d-tag {
+      font-size: .68rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .hero-divider {
+      height: 1px;
+      background: var(--border);
+    }
+    .hero-panel-stat-row {
+      display: flex;
+      gap: 12px;
+    }
+    .hero-mini-stat {
+      flex: 1;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .hero-mini-stat .ms-num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+    .hero-mini-stat .ms-num span { color: var(--accent); }
+    .hero-mini-stat .ms-label {
+      font-size: .68rem;
+      color: var(--body);
+      margin-top: 4px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: var(--radius);
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+      letter-spacing: .01em;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: #3D58E0;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--accent-glow);
+    }
+    .btn-ghost {
+      background: var(--bg-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+      background: var(--bg-3);
+      transform: translateY(-1px);
+    }
+
+    /* ─── SECTION LABELS ──────────────────────────────────────────── */
+    .section-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.35rem, 3vw, 1.75rem);
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -.025em;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      font-size: .95rem;
+      color: var(--body);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 48px;
+      margin-top: 40px;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: .96rem;
+      color: var(--body);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-content: start;
+    }
+    .stat-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
+    }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -.03em;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label {
+      font-size: .78rem;
+      color: var(--body);
+      line-height: 1.4;
+    }
+    .domain-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .domain-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .domain-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ─── SKILLS ──────────────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .skill-group {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 22px;
+    }
+    .skill-group-label {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .skill-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .73rem;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 4px;
+      padding: 3px 9px;
+      font-weight: 500;
+    }
+
+    /* ─── TIMELINE ────────────────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 48px;
+    }
+    .timeline-spine {
+      display: none;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 52px;
+      padding-left: 28px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: -52px;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline-item:last-child::before { bottom: 0; }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 8px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent-glow);
+    }
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .timeline-role {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--heading);
+      letter-spacing: -.015em;
+    }
+    .timeline-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      color: var(--muted);
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+      white-space: nowrap;
+    }
+    .timeline-company {
+      font-size: .88rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+    .timeline-list li {
+      font-size: .88rem;
+      color: var(--body);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+    .timeline-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: .78rem;
+    }
+    .tech-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tech-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      color: var(--muted);
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* ─── PROJECTS ────────────────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .project-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 26px;
+      transition: border-color .2s, transform .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      border-color: var(--accent-glow);
+      transform: translateY(-2px);
+    }
+    .project-card.featured {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .project-card.featured .project-tech {
+      grid-column: 1 / -1;
+    }
+    .project-domain {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .project-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--heading);
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: .87rem;
+      color: var(--body);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .project-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+    .project-highlights li {
+      font-size: .83rem;
+      color: var(--body);
+      padding-left: 14px;
+      position: relative;
+    }
+    .project-highlights li::before {
+      content: '·';
+      position: absolute;
+      left: 2px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-top: auto;
+    }
+
+    /* ─── ACHIEVEMENTS ────────────────────────────────────────────── */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .achievement-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 22px;
+    }
+    .achievement-icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .achievement-title {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 6px;
+    }
+    .achievement-body {
+      font-size: .83rem;
+      color: var(--body);
+      line-height: 1.6;
+    }
+
+    /* ─── BLOG / TESTIMONIALS ─────────────────────────────────────── */
+    .coming-soon-box {
+      background: var(--bg-2);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 44px 32px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .coming-soon-box .cs-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .coming-soon-box h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 8px;
+    }
+    .coming-soon-box p {
+      font-size: .88rem;
+      color: var(--body);
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+    .topics-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 18px;
+    }
+    .topic-chip {
+      font-size: .78rem;
+      font-weight: 500;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      color: var(--body);
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+
+    /* ─── RESUME ──────────────────────────────────────────────────── */
+    .resume-box {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .resume-info h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--heading);
+      margin-bottom: 8px;
+    }
+    .resume-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .resume-bullets li {
+      font-size: .85rem;
+      color: var(--body);
+      padding-left: 14px;
+      position: relative;
+    }
+    .resume-bullets li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: .78rem;
+    }
+
+    /* ─── CONTACT ─────────────────────────────────────────────────── */
+    #contact { border-bottom: none; }
+    .contact-inner {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .contact-inner .section-title { margin-bottom: 12px; }
+    .contact-inner .section-desc {
+      margin: 0 auto 36px;
+      max-width: 460px;
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 11px 20px;
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: border-color .2s, background .2s;
+    }
+    .contact-link:hover {
+      border-color: var(--accent-glow);
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+    .contact-link svg { color: var(--accent); }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-left {
+      font-size: .8rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .footer-right {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .container { padding: 0 36px; }
+      .nav-inner { padding: 0 36px; }
+      .footer-inner { padding: 0 36px; }
+      .hero-layout { grid-template-columns: 1fr 360px; gap: 48px; }
+      .skills-grid { grid-template-columns: repeat(3, 1fr); }
+      .achievements-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-panel { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .nav-inner { padding: 0 20px; }
+      .footer-inner { padding: 0 20px; }
+      section { padding: 64px 0; }
+      #hero { padding: 60px 0; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .resume-box { flex-direction: column; }
+      .contact-inner { padding: 36px 20px; }
+      .achievements-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 24px 20px;
+        gap: 14px;
+        z-index: 99;
+      }
+      .nav-links.open a { font-size: .9rem; }
+      .nav-mobile-btn { display: block; }
+    }
+    @media (max-width: 420px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .achievements-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr; }
+    }
+
+    /* ─── SMOOTH HOVER LIFT ───────────────────────────────────────── */
+    .skill-group, .achievement-card {
+      transition: border-color .2s, transform .2s;
+    }
+    .skill-group:hover, .achievement-card:hover {
+      border-color: var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    /* ─── ACCESSIBILITY ───────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ░░░ NAV ░░░ -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">abhishek-jaiswal.dev</span>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+          <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+      </li>
+    </ul>
+    <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<!-- ░░░ HERO ░░░ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-layout">
+      <!-- Left: Main content -->
+      <div class="hero-left">
+        <p class="hero-breadcrumb">~/engineers/<span>backend</span>/abhishek-jaiswal</p>
+        <div class="hero-badge">Available for new opportunities</div>
+        <h1 class="hero-name">Abhishek Jaiswal</h1>
+        <p class="hero-role">Backend Product Engineer — Scalable Systems & APIs</p>
+        <p class="hero-sub">
+          4.5+ years designing and building CRM, HRMS, Healthcare, and Booking platforms. 
+          I work at the intersection of clean backend architecture and real business outcomes — 
+          writing production code that holds up under load.
+        </p>
+        <div class="hero-meta">
+          <span class="hero-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Pune, India
+          </span>
+          <span class="hero-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            4.5+ Years Experience
+          </span>
+          <span class="hero-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Open to Remote
+          </span>
+        </div>
+        <div class="hero-stack">
+          <span class="chip">Ruby on Rails</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">GraphQL</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">Redis</span>
+          <span class="chip">Sidekiq</span>
+          <span class="chip">Docker</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            View Projects
+          </a>
+          <a href="mailto:abhishekjaiswal@example.com" class="btn btn-ghost">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Contact Me
+          </a>
+          <a href="https://drive.google.com/file/d/1hH1klf15Yi1FVLIPmExNsxATHSrZVCnB/view?usp=drive_link" class="btn btn-ghost" download>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Resume
+          </a>
+        </div>
+      </div>
+      <!-- Right: Visual panel -->
+      <div class="hero-panel">
+        <div>
+          <div class="hero-panel-title">Domain Expertise</div>
+          <div class="hero-domain-grid">
+            <div class="hero-domain-card">
+              <span class="d-icon">🏢</span>
+              <span class="d-name">CRM Systems</span>
+              <span class="d-tag">Sell.Do</span>
+            </div>
+            <div class="hero-domain-card">
+              <span class="d-icon">🏥</span>
+              <span class="d-name">Healthcare Platforms</span>
+              <span class="d-tag">Cycle Vita</span>
+            </div>
+            <div class="hero-domain-card">
+              <span class="d-icon">👥</span>
+              <span class="d-name">HRMS Systems</span>
+              <span class="d-tag">Full build</span>
+            </div>
+            <div class="hero-domain-card">
+              <span class="d-icon">📅</span>
+              <span class="d-name">Booking Systems</span>
+              <span class="d-tag">SqeezeMeIn</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-divider"></div>
+        <div>
+          <div class="hero-panel-title">At a Glance</div>
+          <div class="hero-panel-stat-row">
+            <div class="hero-mini-stat">
+              <div class="ms-num">4<span>+</span></div>
+              <div class="ms-label">Years</div>
+            </div>
+            <div class="hero-mini-stat">
+              <div class="ms-num">5<span>+</span></div>
+              <div class="ms-label">Domains</div>
+            </div>
+            <div class="hero-mini-stat">
+              <div class="ms-num">3</div>
+              <div class="ms-label">Companies</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-divider"></div>
+        <div>
+          <div class="hero-panel-title">Primary Stack</div>
+          <div class="skill-pills" style="margin-top:10px;">
+            <span class="skill-pill">Ruby on Rails</span>
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">MongoDB</span>
+            <span class="skill-pill">Redis</span>
+            <span class="skill-pill">Sidekiq</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">GraphQL</span>
+            <span class="skill-pill">REST APIs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ ABOUT ░░░ -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Engineer who cares about production</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I build backend systems for products that handle real workloads — CRM platforms 
+          with complex workflow automation, HRMS systems with multi-module payroll logic, 
+          healthcare apps with strict data security requirements, and booking systems that 
+          need reliable scheduling at scale.
+        </p>
+        <p>
+          My focus is on correctness, reliability, and maintainability. I care about 
+          query performance, background job reliability, and API design that other 
+          engineers actually enjoy working with.
+        </p>
+        <p>
+          I've shipped features across the full product lifecycle — from greenfield 
+          architecture on a new HRMS platform to debugging production issues on a 
+          high-traffic CRM. Most of my work lives quietly in the backend, doing its job.
+        </p>
+        <div class="domain-badges">
+          <span class="domain-badge"><span class="dot"></span>CRM Systems</span>
+          <span class="domain-badge"><span class="dot"></span>Healthcare</span>
+          <span class="domain-badge"><span class="dot"></span>HRMS</span>
+          <span class="domain-badge"><span class="dot"></span>E-commerce</span>
+          <span class="domain-badge"><span class="dot"></span>Booking &amp; Reservations</span>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">4.5<span>+</span></div>
+          <div class="stat-label">Years shipping production systems</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-label">Business domains served</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Companies, early-to-senior progression</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ SKILLS ░░░ -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Technical Skills</p>
+    <h2 class="section-title">Stack &amp; Tooling</h2>
+    <p class="section-desc">Focused on backend fundamentals, with enough frontend experience to ship complete features independently.</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">Backend</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Ruby on Rails</span>
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">GraphQL</span>
+          <span class="skill-pill">Sidekiq</span>
+          <span class="skill-pill">Redis</span>
+          <span class="skill-pill">Devise</span>
+          <span class="skill-pill">JWT Auth</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Databases</div>
+        <div class="skill-pills">
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">MongoDB</span>
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">ActiveRecord</span>
+          <span class="skill-pill">Query Optimization</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Frontend</div>
+        <div class="skill-pills">
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">Vue.js</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Infrastructure</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Docker</span>
+          <span class="skill-pill">AWS S3</span>
+          <span class="skill-pill">CI/CD</span>
+          <span class="skill-pill">Heroku</span>
+          <span class="skill-pill">Nginx</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Observability</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Datadog</span>
+          <span class="skill-pill">Grafana</span>
+          <span class="skill-pill">Log Analysis</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Practices</div>
+        <div class="skill-pills">
+          <span class="skill-pill">RSpec / TDD</span>
+          <span class="skill-pill">Code Review</span>
+          <span class="skill-pill">System Design</span>
+          <span class="skill-pill">REST Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ EXPERIENCE ░░░ -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">Work History</h2>
+    <p class="section-desc">Three companies, growing scope of ownership — from backend feature delivery to system architecture and production reliability.</p>
+    <div class="timeline">
+
+      <!-- Sell.Do -->
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">Product Engineer II</span>
+          <span class="timeline-period">2023 – Present</span>
+        </div>
+        <div class="timeline-company">Sell.Do</div>
+        <ul class="timeline-list">
+          <li>Enhanced CRM workflow automation, reducing manual steps in lead management pipelines</li>
+          <li>Diagnosed and resolved production issues affecting client-facing automation processes</li>
+          <li>Optimized MongoDB aggregation queries, improving reporting load time on high-volume datasets</li>
+          <li>Delivered client-specific customizations on a multi-tenant CRM platform without regressions</li>
+          <li>Collaborated closely with product and support to translate business requirements into backend logic</li>
+        </ul>
+        <div class="tech-chips">
+          <span class="tech-chip">Ruby on Rails</span>
+          <span class="tech-chip">MongoDB</span>
+          <span class="tech-chip">Sidekiq</span>
+          <span class="tech-chip">Redis</span>
+          <span class="tech-chip">REST APIs</span>
+        </div>
+      </div>
+
+      <!-- Technomatz -->
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">Ruby on Rails Developer</span>
+          <span class="timeline-period">2022 – 2023</span>
+        </div>
+        <div class="timeline-company">Technomatz IT Solutions</div>
+        <ul class="timeline-list">
+          <li>Architected and built an HRMS platform from scratch — sole backend engineer on the project</li>
+          <li>Delivered six core modules: Attendance, Salary, Leave Management, Projects, Invoicing, and Team Availability</li>
+          <li>Designed the data model and API structure to support multi-role access and approval workflows</li>
+          <li>Added Docker containerization post-development to standardize the deployment environment</li>
+          <li>Built reporting features for payroll and attendance that are used in monthly HR operations</li>
+        </ul>
+        <div class="tech-chips">
+          <span class="tech-chip">Ruby on Rails</span>
+          <span class="tech-chip">PostgreSQL</span>
+          <span class="tech-chip">Docker</span>
+          <span class="tech-chip">Sidekiq</span>
+          <span class="tech-chip">Devise</span>
+        </div>
+      </div>
+
+      <!-- Witmates -->
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <span class="timeline-role">Software Engineer</span>
+          <span class="timeline-period">2020 – 2022</span>
+        </div>
+        <div class="timeline-company">Witmates Technologies</div>
+        <ul class="timeline-list">
+          <li>Built production backend systems in Rails for healthcare tracking and e-commerce platforms</li>
+          <li>Designed and delivered REST APIs consumed by mobile and web clients</li>
+          <li>Improved database query performance through indexing strategies and N+1 elimination</li>
+          <li>Integrated third-party payment gateways and notification services (SMS, email)</li>
+          <li>Implemented JWT-based authentication and AES encryption for sensitive medical records</li>
+        </ul>
+        <div class="tech-chips">
+          <span class="tech-chip">Ruby on Rails</span>
+          <span class="tech-chip">PostgreSQL</span>
+          <span class="tech-chip">MySQL</span>
+          <span class="tech-chip">JWT</span>
+          <span class="tech-chip">AWS S3</span>
+          <span class="tech-chip">Stripe</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ PROJECTS ░░░ -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Featured Work</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-desc">Systems built for real business operations — not side projects, not demos.</p>
+    <div class="projects-grid">
+
+      <div class="project-card featured">
+        <div>
+          <div class="project-domain">CRM Platform</div>
+          <h3 class="project-name">Sell.Do — Enterprise CRM</h3>
+          <p class="project-desc">Multi-tenant CRM system for managing leads, sales workflows, and client automation at scale.</p>
+        </div>
+        <ul class="project-highlights">
+          <li>Workflow automation logic for lead assignment and escalation</li>
+          <li>Reporting pipeline optimized via MongoDB aggregation</li>
+          <li>Production incident resolution and root-cause analysis</li>
+          <li>Client-specific configuration without core-product regressions</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-chip">Ruby on Rails</span>
+          <span class="tech-chip">MongoDB</span>
+          <span class="tech-chip">Redis</span>
+          <span class="tech-chip">Sidekiq</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-domain">HRMS Platform</div>
+        <h3 class="project-name">Internal HRMS — Built from Scratch</h3>
+        <p class="project-desc">Full HR management system designed and built as the sole backend engineer, covering the complete employee lifecycle.</p>
+        <ul class="project-highlights">
+          <li>Attendance tracking with shift and override support</li>
+          <li>Salary calculation engine with configurable deductions</li>
+          <li>Leave management with multi-level approval flows</li>
+          <li>Project assignment, invoicing, and team availability modules</li>
+          <li>Containerized deployment via Docker</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-chip">Ruby on Rails</span>
+          <span class="tech-chip">PostgreSQL</span>
+          <span class="tech-chip">Docker</span>
+          <span class="tech-chip">Sidekiq</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-domain">Healthcare</div>
+        <h3 class="project-name">Cycle Vita — Medical Data Tracker</h3>
+        <p class="project-desc">Healthcare application for tracking and managing sensitive medical cycle data, built with security-first architecture.</p>
+        <ul class="project-highlights">
+          <li>AES encryption for all sensitive medical records at rest</li>
+          <li>JWT-based stateless authentication</li>
+          <li>Background jobs for scheduled reminders and data processing</li>
+          <li>Push and email notification integrations</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-chip">Ruby on Rails</span>
+          <span class="tech-chip">PostgreSQL</span>
+          <span class="tech-chip">JWT</span>
+          <span class="tech-chip">Sidekiq</span>
+          <span class="tech-chip">AES Encryption</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-domain">Booking System</div>
+        <h3 class="project-name">SqeezeMeIn — Bookings for Gyms &amp; Salons</h3>
+        <p class="project-desc">Appointment and slot booking platform for fitness and wellness businesses, with integrated payments and admin analytics.</p>
+        <ul class="project-highlights">
+          <li>Real-time slot booking with conflict prevention logic</li>
+          <li>Payment gateway integration for upfront booking fees</li>
+          <li>Admin dashboard for schedule management and capacity tracking</li>
+          <li>Analytics views for booking trends and revenue</li>
+        </ul>
+        <div class="project-tech">
+          <span class="tech-chip">Ruby on Rails</span>
+          <span class="tech-chip">PostgreSQL</span>
+          <span class="tech-chip">Stripe</span>
+          <span class="tech-chip">Vue.js</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ ACHIEVEMENTS ░░░ -->
+<section id="achievements">
+  <div class="container">
+    <p class="section-label">Impact</p>
+    <h2 class="section-title">Engineering Highlights</h2>
+    <p class="section-desc">Measured outcomes from production work — not aspirational goals.</p>
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <div class="achievement-icon">⚡</div>
+        <div class="achievement-title">Query Performance</div>
+        <div class="achievement-body">Reduced reporting query time through MongoDB aggregation optimization on a high-volume CRM dataset.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-icon">🏗️</div>
+        <div class="achievement-title">Greenfield Architecture</div>
+        <div class="achievement-body">Designed and built a full HRMS from zero to production as sole backend engineer, shipping 6 modules end-to-end.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-icon">🔐</div>
+        <div class="achievement-title">Security Implementation</div>
+        <div class="achievement-body">Implemented AES encryption and JWT auth on a healthcare platform handling sensitive personal medical data.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-icon">🌐</div>
+        <div class="achievement-title">Cross-Domain Delivery</div>
+        <div class="achievement-body">Shipped production systems across 5 distinct domains — CRM, HRMS, Healthcare, E-commerce, and Bookings.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-icon">🐛</div>
+        <div class="achievement-title">Production Reliability</div>
+        <div class="achievement-body">Reduced recurring production incidents on a live CRM through root-cause debugging and targeted system hardening.</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-icon">📦</div>
+        <div class="achievement-title">Infrastructure Maturity</div>
+        <div class="achievement-body">Containerized a production Rails application with Docker, standardizing deployments and eliminating environment drift.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ BLOG ░░░ -->
+<section id="blog">
+  <div class="container">
+    <p class="section-label">Writing</p>
+    <h2 class="section-title">Technical Articles</h2>
+    <div class="coming-soon-box">
+      <div class="cs-icon">✍️</div>
+      <h3>Technical Writing — Coming Soon</h3>
+      <p>I'm working on articles about the problems I've encountered in production. No tutorials, no rephrased docs — just real engineering notes.</p>
+      <div class="topics-list">
+        <span class="topic-chip">Ruby on Rails Internals</span>
+        <span class="topic-chip">System Design</span>
+        <span class="topic-chip">Sidekiq Patterns</span>
+        <span class="topic-chip">PostgreSQL Optimization</span>
+        <span class="topic-chip">Production Debugging</span>
+        <span class="topic-chip">MongoDB Aggregation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ TESTIMONIALS ░░░ -->
+<section id="testimonials">
+  <div class="container">
+    <p class="section-label">Recommendations</p>
+    <h2 class="section-title">What Colleagues Say</h2>
+    <div class="coming-soon-box">
+      <div class="cs-icon">💬</div>
+      <h3>LinkedIn Recommendations — Coming Soon</h3>
+      <p>Collecting recommendations from colleagues and managers. In the meantime, feel free to reach out directly — I'm happy to connect references.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ RESUME ░░░ -->
+<section id="resume">
+  <div class="container">
+    <p class="section-label">Resume</p>
+    <h2 class="section-title">Download CV</h2>
+    <div class="resume-box">
+      <div class="resume-info">
+        <h3>Abhishek Jaiswal — Backend Product Engineer</h3>
+        <ul class="resume-bullets">
+          <li>4.5+ years of production backend engineering</li>
+          <li>Systems across CRM, HRMS, Healthcare, Booking, and E-commerce</li>
+          <li>Ruby on Rails, PostgreSQL, MongoDB, Docker, Redis, Sidekiq</li>
+          <li>Available for backend, product, and senior engineering roles</li>
+        </ul>
+      </div>
+      <a href="https://drive.google.com/file/d/1hH1klf15Yi1FVLIPmExNsxATHSrZVCnB/view?usp=drive_link" class="btn btn-primary" download>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ CONTACT ░░░ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <p class="section-label" style="text-align:center">Contact</p>
+      <h2 class="section-title">Let's Build Scalable Systems Together</h2>
+      <p class="section-desc">
+        Open to backend engineering and product engineering opportunities, technical collaborations, and impactful software challenges. I respond to every genuine message.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:jaiswalabhishek0802@gmail.com" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+        <a href="https://linkedin.com/in/abhishek-jaiswal-eng" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/abhishek-jaiswal-eng/About-Me" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░░ FOOTER ░░░ -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-left">abhishek@jaiswal ~</span>
+    <span class="footer-right">Backend Product Engineer · Indore, India</span>
+  </div>
+</footer>
+
+<script>
+  // ── Theme toggle ──────────────────────────────────────────────
+  const html = document.documentElement;
+  const themeBtn = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  const sunSVG = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+  const moonSVG = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
+
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    themeIcon.innerHTML = theme === 'dark' ? sunSVG : moonSVG;
+    themeBtn.setAttribute('title', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+
+  const saved = localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  setTheme(saved);
+
+  themeBtn.addEventListener('click', () => {
+    setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // ── Mobile nav ────────────────────────────────────────────────
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  mobileBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    mobileBtn.textContent = open ? '✕' : '☰';
+    mobileBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      mobileBtn.textContent = '☰';
+    });
+  });
+
+  // ── Active section highlight on scroll ───────────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navAnchors.forEach(a => {
+          a.style.color = a.getAttribute('href') === `#${id}`
+            ? 'var(--text)' : '';
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
